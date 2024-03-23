@@ -15,7 +15,7 @@ object frmMain: TfrmMain
     Left = 0
     Top = 30
     Width = 624
-    Height = 411
+    Height = 386
     Align = alClient
     BevelOuter = bvNone
     Padding.Left = 10
@@ -29,7 +29,7 @@ object frmMain: TfrmMain
       Left = 10
       Top = 5
       Width = 604
-      Height = 396
+      Height = 371
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -75,6 +75,9 @@ object frmMain: TfrmMain
       MultiSelect = True
       ParentFont = False
       TabOrder = 0
+      OnClick = ListItemsClick
+      ExplicitWidth = 602
+      ExplicitHeight = 388
     end
   end
   object PanelToolbar: TPanel
@@ -116,6 +119,7 @@ object frmMain: TfrmMain
         Hint = 'Move the selected item(s) to the top of the list'
         Caption = '&Top'
         TabOrder = 0
+        OnClick = ButtonTopClick
       end
       object ButtonUp: TButton
         Left = 85
@@ -125,6 +129,7 @@ object frmMain: TfrmMain
         Hint = 'Move the selected item(s) up one position in the list'
         Caption = 'Up'
         TabOrder = 3
+        OnClick = ButtonUpClick
       end
       object ButtonDown: TButton
         Left = 160
@@ -134,6 +139,7 @@ object frmMain: TfrmMain
         Hint = 'Move the selected item(s) down one position in the list'
         Caption = 'Down'
         TabOrder = 2
+        OnClick = ButtonDownClick
       end
       object ButtonBottom: TButton
         Left = 235
@@ -143,7 +149,22 @@ object frmMain: TfrmMain
         Hint = 'Move the selected item(s) to the bottom of the list'
         Caption = 'Bottom'
         TabOrder = 1
+        OnClick = ButtonBottomClick
       end
     end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Top = 416
+    Width = 624
+    Height = 25
+    Panels = <
+      item
+        Bevel = pbNone
+        Text = 'By John M. Wargo (https://johnwargo.com)'
+        Width = 50
+      end>
+    OnClick = StatusBarClick
+    ExplicitTop = 411
   end
 end
