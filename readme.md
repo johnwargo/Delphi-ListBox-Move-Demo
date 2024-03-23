@@ -8,7 +8,7 @@ I was working on a Windows application project in Delphi that required moving it
 
 ## About The Code
 
-
+As I started writing the code that responded to the different buttons, I realized that in order for this to work, the app needed to detect whether the item(s) **could** move before actually trying to move the item(s). Rather than build the logic into the buttons themselves, I made a simple procedure called `UpdateFormState` that did the checking for me; here's the code:
 
 ```pascal
 function CanMoveItem(List: TListBox; Direction: TMoveDirection): Boolean;
@@ -62,6 +62,7 @@ begin
 end;
 ```
 
+With that in place, everywhere the app could affect selected items, I made a call to the `UpdateFormState` procedure. Each of the buttons will enable or disable depending on whether the button can act on the selected item positions.
 
 
 ## Runtime
