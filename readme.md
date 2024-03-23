@@ -64,7 +64,24 @@ end;
 
 With that in place, everywhere the app could affect selected items, I made a call to the `UpdateFormState` procedure. Each of the buttons will enable or disable depending on whether the button can act on the selected item positions.
 
+Rather than hard-coding disabling buttons so users can't click them again while the application is moving ListBox items, I did something I've never done before. Every time you trigger an event on a Delphi component, Delphi passes the resulting procedure call a `Sender` object which is the component that fired the event. To simplify things, created a procedure that used the `Sender` object to get a handle to the clicked button, then set the `Enabled` property on that object to `False` to disable the button. This made the code much cleaner.
+
+```pascal
+procedure DisableButton(Sender: TObject);
+// Disables the button using the Sender object
+// Keps me from having to manually disable a specific button
+var
+  btn: TButton;
+begin
+  btn := Sender as TButton;
+  btn.Enabled := false;
+end;
+```
+
+Take a look at the code for each button to see how I moved multiple selected items around in the app.
 
 ## Runtime
+
+When you run the app, it opens with a list of random words paired into 2, 3 or 4 word phrases in the list box. Select one or more items in the list, then click the buttons to move the selected items to the Top or Bottom of the list or to move them up or down.
 
 ![Application Main Screen](images/image-01.png)
