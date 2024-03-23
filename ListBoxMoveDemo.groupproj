@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{39FB4A77-3170-4318-9396-C3587B170423}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ListBoxMove.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ListBoxMove">
+        <MSBuild Projects="ListBoxMove.dproj"/>
+    </Target>
+    <Target Name="ListBoxMove:Clean">
+        <MSBuild Projects="ListBoxMove.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ListBoxMove:Make">
+        <MSBuild Projects="ListBoxMove.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ListBoxMove"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ListBoxMove:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ListBoxMove:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
